@@ -1,7 +1,6 @@
-
 # Rest client for Atlassian client
 
-Provides access to *some* of client's APIs.
+Provides access to _some_ of client's APIs.
 
 [![Build Status](https://travis-ci.org/markmssd/bitbucket-server-nodejs.svg?branch=master)](https://travis-ci.org/markmssd/bitbucket-server-nodejs)
 [![Coverage Status](https://coveralls.io/repos/github/markmssd/bitbucket-server-nodejs/badge.svg?branch=master)](https://coveralls.io/github/markmssd/bitbucket-server-nodejs?branch=master)
@@ -9,11 +8,13 @@ Provides access to *some* of client's APIs.
 [![npm package](https://nodei.co/npm/bitbucket-server-nodejs.png?downloads=true&downloadRank=true)](https://nodei.co/npm/bitbucket-server-nodejs/)
 
 ## Installation
+
 ```
 npm install bitbucket-server-nodejs
 ```
 
 ## Initializing Client
+
 Supports public, basic auth (either with username/password, or [Personal Access Tokens](https://confluence.atlassian.com/bitbucketserver/personal-access-tokens-939515499.html)) and OAuth1.
 
 Specify auth's type as 'public', 'basic' or 'oauth'. Defaults to 'public'.
@@ -63,6 +64,18 @@ Get all projects.
 client.projects.get(); // Promise
 ```
 
+Create project.
+
+```
+client.projects.post(data); // Promise
+```
+
+Update project.
+
+```
+client.projects.put(projectKey, data); // Promise
+```
+
 ### repos
 
 Get all repos for a project.
@@ -87,6 +100,18 @@ Get one repo for a project.
 
 ```
 client.repos.getRepo(projectKey, repo); // Promise
+```
+
+Create repository.
+
+```
+client.repos.post(projectKey, data); // Promise
+```
+
+Update repository.
+
+```
+client.repos.put(projectKey, repo, data); // Promise
 ```
 
 ### branches
@@ -155,7 +180,7 @@ Get all pull requests in a specific state (defaults OPEN).
 client.prs.getCombined(null, null, { state: "MERGED" }); // Promise
 ```
 
-*Possible states: ALL, OPEN, DECLINED or MERGED.*
+_Possible states: ALL, OPEN, DECLINED or MERGED._
 
 ### hooks
 
@@ -207,15 +232,15 @@ client.users.getUser(userSlug); // Promise
 
 ## API Coverage
 
- - /rest/api/1.0/users [GET]
- - /rest/api/1.0/users/{userSlug} [GET]
- - /rest/api/1.0/users/{userSlug}/settings [GET]
- - /rest/api/1.0/projects [GET]
- - /rest/api/1.0/projects/{projectKey}/repos [GET]
- - /rest/api/1.0/projects/{projectKey}/repos/{repositorySlug} [GET]
- - /rest/api/1.0/projects/{projectKey}/repos/{repositorySlug}/browse [GET]
- - /rest/api/1.0/projects/{projectKey}/repos/{repositorySlug}/branches [GET]
- - /rest/api/1.0/projects/{projectKey}/repos/{repositorySlug}/pull-requests [GET]
- - /rest/api/1.0/projects/{projectKey}/repos/{repositorySlug}/settings/hooks [GET]
- - /rest/api/1.0/projects/{projectKey}/repos/{repositorySlug}/settings/hooks/{hookKey}/enabled [PUT]
- - /rest/api/1.0/projects/{projectKey}/repos/{repositorySlug}/tags [GET]
+- /rest/api/1.0/users [GET]
+- /rest/api/1.0/users/{userSlug} [GET]
+- /rest/api/1.0/users/{userSlug}/settings [GET]
+- /rest/api/1.0/projects [GET]
+- /rest/api/1.0/projects/{projectKey}/repos [GET]
+- /rest/api/1.0/projects/{projectKey}/repos/{repositorySlug} [GET]
+- /rest/api/1.0/projects/{projectKey}/repos/{repositorySlug}/browse [GET]
+- /rest/api/1.0/projects/{projectKey}/repos/{repositorySlug}/branches [GET]
+- /rest/api/1.0/projects/{projectKey}/repos/{repositorySlug}/pull-requests [GET]
+- /rest/api/1.0/projects/{projectKey}/repos/{repositorySlug}/settings/hooks [GET]
+- /rest/api/1.0/projects/{projectKey}/repos/{repositorySlug}/settings/hooks/{hookKey}/enabled [PUT]
+- /rest/api/1.0/projects/{projectKey}/repos/{repositorySlug}/tags [GET]
